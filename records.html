@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCS TECHRFEST 2026 | Records</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="shell">
+      <nav class="nav">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">C</span>
+          <span class="brand-copy">
+            <strong>CCS TECHRFEST 2026</strong>
+            <span>Qualifier Sequence</span>
+          </span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Gateway</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="speakers.html">Speakers</a>
+          <a href="archive.html">Archive</a>
+          <a class="active" href="records.html">Records</a>
+          <a href="panel.html">Panel</a>
+        </div>
+      </nav>
+
+      <main class="grid grid-2">
+        <section class="panel">
+          <div class="eyebrow">Record Portal</div>
+          <h2 style="margin-top: 1rem">Packet <span class="accent">Lookup</span></h2>
+          <p class="lead">
+            Query a record by numeric id. Current session viewer:
+            <code id="active-user">guest</code>.
+          </p>
+
+          <form id="record-form" class="form" style="margin-top: 1.5rem">
+            <div class="field">
+              <label for="record-id">Record ID</label>
+              <input id="record-id" name="record" type="text" value="101" />
+            </div>
+            <div class="actions">
+              <button type="submit">Open Record</button>
+              <a class="button" href="records.html?user=guest&record=101">Reset</a>
+            </div>
+          </form>
+
+          <div class="callout tiny" style="margin-top: 1rem" data-viewer="Z3Vlc3Q=" data-range="MTAxLDIwMyw3MjY=">
+            Session scope: read access is determined by active view state.
+          </div>
+        </section>
+
+        <aside class="panel result" id="record-result">
+          <strong>Loading packet</strong>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>

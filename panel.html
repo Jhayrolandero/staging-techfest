@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCS TECHRFEST 2026 | Panel</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="shell">
+      <nav class="nav">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">C</span>
+          <span class="brand-copy">
+            <strong>CCS TECHRFEST 2026</strong>
+            <span>Qualifier Sequence</span>
+          </span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Gateway</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="speakers.html">Speakers</a>
+          <a href="archive.html">Archive</a>
+          <a href="records.html">Records</a>
+          <a class="active" href="panel.html">Panel</a>
+        </div>
+      </nav>
+
+      <main class="grid grid-2">
+        <section class="panel">
+          <div class="eyebrow">Control Surface</div>
+          <h2 style="margin-top: 1rem">Admin <span class="accent">Panel</span></h2>
+          <p class="lead">
+            Console state:
+            <code id="admin-state">Attendee | Limited console access</code>
+          </p>
+
+          <form id="admin-form" class="form" style="margin-top: 1.5rem">
+            <div class="field">
+              <label for="role-input">Role</label>
+              <input id="role-input" name="role" type="text" value="attendee" />
+            </div>
+            <div class="field">
+              <label for="view-input">View</label>
+              <input id="view-input" name="view" type="text" value="summary" />
+            </div>
+            <div class="actions">
+              <button type="submit">Refresh View</button>
+              <a class="button" href="panel.html">Reset</a>
+            </div>
+          </form>
+
+          <div class="callout tiny" style="margin-top: 1rem" data-mode="c3VtbWFyeQ==" data-role="YXR0ZW5kZWU=">
+            Trace: <code id="panel-trace">view=summary | role=attendee</code>
+          </div>
+        </section>
+
+        <aside class="panel result" id="admin-result">
+          <strong>Loading console</strong>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>
