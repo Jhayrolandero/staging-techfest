@@ -1,23 +1,23 @@
 const recordStore = {
   101: {
     owner: "guest",
-    title: "Volunteer checklist",
+    title: "Visitor guide",
     classification: "public",
-    body: "Badge pickup starts at 08:30. Bring campus pass and challenge token.",
+    body: "General event information and venue guidance for attendees.",
     payload: "Y2FjaGVfd2FybXVwX25vdGU=",
   },
   203: {
     owner: "guest",
-    title: "Venue map delta",
+    title: "Venue map update",
     classification: "public",
-    body: "South wing pods are renumbered. Use the corridor display for updates.",
+    body: "Updated room naming for TECHFEST 2026 spaces and access points.",
     payload: "cG9kX3JlbWFwXzIwMjY=",
   },
   726: {
     owner: "staff",
-    title: "Analyst retention packet",
+    title: "Staff resource bundle",
     classification: "internal",
-    body: "This packet was not linked from the UI but remains queryable by record id.",
+    body: "Restricted internal event resource retained in the portal store.",
     payload: "VEVDSEZFU1QyNntpZG9yX2lzX2p1c3RfdW5hdXRob3JpemVkX2xvb2t1cH0=",
   },
 };
@@ -25,15 +25,15 @@ const recordStore = {
 const adminProfiles = {
   attendee: {
     label: "Attendee",
-    status: "Limited console access",
+    status: "Limited panel access",
   },
   reviewer: {
     label: "Reviewer",
-    status: "Can inspect submitted packets",
+    status: "Can inspect event submissions",
   },
   admin: {
     label: "Administrator",
-    status: "Control plane unlocked",
+    status: "Control panel unlocked",
     flag: "TECHFEST26{client_side_trust_is_not_auth}",
   },
 };
@@ -67,8 +67,8 @@ function renderRecordPage() {
     const record = recordStore[id];
     if (!record) {
       result.innerHTML = `
-        <strong>Record lookup failed</strong>
-        <p class="muted">No packet exists for id ${id}.</p>
+        <strong>Resource unavailable</strong>
+        <p class="muted">No resource exists for id ${id}.</p>
       `;
       return;
     }
@@ -117,14 +117,14 @@ function renderAdminPage() {
 
   if (role === "admin" && view === "control") {
     result.innerHTML = `
-      <strong>Control plane</strong>
+      <strong>Control panel</strong>
       <p class="muted">Administrative mode accepted. Review the recovered credential below.</p>
       <div class="secret">${profile.flag}</div>
     `;
   } else {
     result.innerHTML = `
-      <strong>Restricted console</strong>
-      <p class="muted">This panel only exposes summary telemetry for the current session.</p>
+      <strong>Restricted panel</strong>
+      <p class="muted">This panel only exposes summary event telemetry for the current session.</p>
       <div class="pill-row" style="margin-top: 1rem">
         <span class="pill">role: ${role}</span>
         <span class="pill">view: ${view}</span>
@@ -135,7 +135,10 @@ function renderAdminPage() {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const next = new URL(window.location.href);
-    next.searchParams.set("role", byId("role-input").value.trim() || "attendee");
+    next.searchParams.set(
+      "role",
+      byId("role-input").value.trim() || "attendee",
+    );
     next.searchParams.set("view", byId("view-input").value.trim() || "summary");
     window.location.href = next.toString();
   });
